@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from "sequelize";
 import { sequelize as database } from "../database/connection.js";
 
-const ProfessionalEntity = database.define('User', {
+const ProfessionalEntity = database.define('Professional', {
     id: {
         type: DataTypes.UUID,
         allowNull: false,

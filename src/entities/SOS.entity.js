@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from "sequelize";
 import { sequelize as database } from "../database/connection.js";
 
-const SOSEntity = database.define('User', {
+const SOSEntity = database.define('SOS', {
     id: {
         type: DataTypes.UUID,
         allowNull: false,

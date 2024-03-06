@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from "sequelize";
 import { sequelize as database } from "../database/connection.js";
 
-const AgencyEntity = database.define('User', {
+const AgencyEntity = database.define('Agency', {
     id: {
         type: DataTypes.UUID,
         allowNull: false,
@@ -12,7 +12,7 @@ const AgencyEntity = database.define('User', {
         type: DataTypes.STRING(50),
         allowNull: false
     },
-    addres: {
+    address: {
         type: DataTypes.STRING(50),
         allowNull: false
     }

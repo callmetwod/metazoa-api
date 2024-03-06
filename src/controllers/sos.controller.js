@@ -1,32 +1,38 @@
+import {SOSService} from "../services/sos.service.js";
+import { SOSEntity } from "../entities/SOS.entity.js";
+import { SUCCESS, ERRORS } from "../shared/messages.js";
+
 const instanceServiceSOS = new SOSService();
 
-const createSOS = async (req, res) => { const { name, email, password } = req.body; const newSOS = await instanceServiceSOS.createSOSService(name, email, password); return res .status(201) .json({ message: "SOS criado com sucesso!", newSOS }); }
-
-const getAllSOS = async (req, res) => { const SOSs = instanceServiceSOS.getAllSOSService(); return res.json({ SOSs }); }
-
-const getSOSByName = async (req, res) => { const { name } = req.body; const SOSFindName = await SOSEntity.findOne({ where: { name } }); return res.json({ SOSFindName }); }
-
-const updatePassword = async (req, res) => { const { id } = req.params; const { newPassword } = req.body;
-
-const SOSAlreadyExist = await SOSEntity.findOne({
-    where: {
-        id
-    }
-});
-
-if (SOSAlreadyExist) {
-    return res.json({ message: `SOS ${ERRORS.NOT_FOUND}` });
+const createSOS = async (req, res) => {
+    const { name, email, phone, address } = req.body; 
+    const newSOS = await instanceServiceSOS.createSOSService(name, email, phone, address);
+    res .status(201).json({ newSOS }); 
 }
 
-await SOSEntity.update({ password: newPassword }, {
-    where: {
-        id
-    }
-});
-const messageUpdate = await SOSEntity.findByPk(id)
-return res.json({ messageUpdate });
+const getAllSOS = async (req, res) => { 
+    const SOSs = await instanceServiceSOS.getAllSOSService(); 
+    res.status(200).json({ SOSs }); 
 }
 
-const deleteSOS = async (req, res) => { const { id } = req.params; await SOSEntity.destroy({ where: { id } }); return res.json({ message: SOS ${SUCCESS.DELETED} }); }
+const getSOSByName = async (req, res) => { 
+    const { name } = req.body; 
+    const SOSFindName = await instanceServiceSOS.getSOSbyNameService(name);
+    res.status(200).json({ SOSFindName }); 
+}
 
-export { createSOS, getAllSOS, getSOSByName, updatePassword, deleteSOS }
+
+const deleteSOS = async (req, res) => { 
+    const { id } = req.params; 
+    const deletedSOS = await instanceServiceSOS.deleteSOSService(id);
+    return res.status(200).json({ message: `${deletedSOS} ${SUCCESS.DELETED}` }); 
+}
+
+const updateSOSPhone = async (req, res) => {
+    const { id } = req.params;
+    const { phone } = req.body;
+    const updatedSOS = await instanceServiceSOS.updatePhoneService(id, phone);
+    res.status(200).json({ updatedSOS });
+}
+
+export { createSOS, getAllSOS, getSOSByName, deleteSOS, updateSOSPhone }
