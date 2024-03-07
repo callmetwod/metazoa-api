@@ -20,7 +20,9 @@ export class UserService {
             const newUser = await UserEntity.create({
                 name, email, password
             });
-            return `O usuário ${newUser.name} ${SUCCESS.CREATED}`, newUser;
+
+            return `O usuário ${newUser.name} ${SUCCESS.CREATED}`;
+
         } catch (error) {
             return error;
         }

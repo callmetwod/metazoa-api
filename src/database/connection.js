@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 
 // const sequelize = new Sequelize('metazoa', 'root', 'root',{
-//     host: '',
+//     host: 'localhost',
 //     dialect: 'mysql'
 // })
 

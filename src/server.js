@@ -4,7 +4,7 @@ import cors from "cors"
 import { routes } from "./routes/index.routes.js"
 
 const app = express()
-const port = 35439
+const port = 3306
 
 const cors_config = { origin: "*" }
 
