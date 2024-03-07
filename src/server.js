@@ -6,8 +6,10 @@ import { routes } from "./routes/index.routes.js"
 const app = express()
 const port = 3000
 
+const cors_config = { origin: "*" }
+
 app.use(express.json())
-app.use(cors())
+app.use(cors(cors_config))
 app.use(routes)
 
 app.listen(port, async () => {
