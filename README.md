@@ -7,7 +7,7 @@ Foi utilizado Express para o roteamento e manipulação de requisições HTTP, e
 
 (Todos os dados estão hospedados na https://railway.app/ numa imagem em MySql)
 
-Código feito em conjunto com @oziel062
+Código feito em conjunto com [@oziel062](https://github.com/Oziel062)
 
 ## 🖥️Endpoints
 
